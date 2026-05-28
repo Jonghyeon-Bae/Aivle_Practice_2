@@ -1,0 +1,28 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Employee {
+  id             String   @id @default(uuid())
+  name           String
+  department     String
+  role           String
+  joinDate       String
+  status         String
+  attendanceRate Float
+  monthlyOutput  Int
+  defectRate     Float
+  safetyScore    Float
+  logs           String
+  
+  // AI 인사평가 결과 (3단계 연동 시 누적 저장)
+  aiRating       String?
+  aiScores       String?  // JSON string: {"diligence": 4.5, "productivity": 4.0, ...}
+  aiSummary      String?
+  aiImprovement  String?
+}

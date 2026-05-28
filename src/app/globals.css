@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-slate-900;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 rounded-full hover:bg-slate-700 transition-colors;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  @apply bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 shadow-2xl;
+}
+.glass-card {
+  @apply bg-slate-900/40 backdrop-blur-lg border border-slate-800/50 hover:border-brand-500/30 transition-all duration-300;
+}
+.glass-input {
+  @apply bg-slate-950/50 border border-slate-800 rounded-lg px-4 py-2 text-slate-100 focus:outline-none focus:border-brand-500 transition-colors;
+}
+
+/* Print CSS Styles for PDF export */
+@media print {
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 12pt !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-page-break {
+    page-break-after: always;
+    break-after: page;
+    display: block !important;
+    margin: 0 !important;
+    padding: 2rem 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  @page {
+    size: A4 landscape;
+    margin: 1.2cm;
+  }
+
+  /* Force print color graphics */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
